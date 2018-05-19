@@ -1,0 +1,6 @@
+[submodule "task-assignment-service"]
+	path = task-assignment-service
+	url = git@github.com:luchoman08/task-assignment-service.git
+[submodule "software-project-management-frontend"]
+	path = software-project-management-frontend
+	url = git@github.com:luchoman08/software-project-management-frontend.git
