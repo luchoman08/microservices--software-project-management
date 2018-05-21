@@ -2,25 +2,26 @@ version: '2.0'
 
 services:
   software-project-management-frontend:
-    container_name: micro-software-pm
     build:
       context: software-project-management-frontend
       dockerfile: Dockerfile
+    command: ng serve --host 0.0.0.0
     volumes:
       - ./software-project-management-frontend:/usr/src/app
       - '/usr/src/app/node_modules'
     ports:
       - '4200:4200'
     depends_on:
-      - orchestator
+      - orchrestator
   orchrestator:
     build:
       context: orchestrator-and-auth
       dockerfile: Dockerfile
     volumes:
-      - ./orchestrator-and-auth:/code
+      - ./orchestrator-and-auth:/app
     ports:
-      - '8000:80000'
+      - '8000:8000'
+    command: python manage.py runserver 0.0.0.0:8000
     depends_on:
       - project-managers-interface
       - user-stories-assignment
@@ -31,14 +32,14 @@ services:
     volumes:
       - ./project-managers-interface:/usr/src/app
       - '/usr/src/app/node_modules'
+    command:  npm run watch 
     ports:
       - '3000:3000'
-    depends_on:
-      - orchrestator
   user-stories-assignment:
     build: 
       context: user-stories-assignment-service
       dockerfile: Dockerfile
+    command: npm run watch 
     volumes:
       - ./user-stories-assignment-service:/usr/src/app
       - '/usr/src/app/node_modules'
@@ -50,8 +51,8 @@ services:
     build: 
       context: task-assignment-service
       dockerfile: Dockerfile
-    command: python3 manage.py runserver 0.0.0.0:8000
+    command: python manage.py runserver 0.0.0.0:8001
     volumes:
-      - ./task-assignment-service:/code
+      - ./task-assignment-service:/app
     ports:
       - "8001:8001"
