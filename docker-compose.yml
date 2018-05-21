@@ -25,6 +25,7 @@ services:
     depends_on:
       - project-managers-interface
       - user-stories-assignment
+      - task-assignment
   project-managers-interface:
     build:
       context: project-managers-interface
