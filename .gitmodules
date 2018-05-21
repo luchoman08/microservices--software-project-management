@@ -7,3 +7,9 @@
 [submodule "orchestrator-and-auth"]
 	path = orchestrator-and-auth
 	url = https://github.com/luchoman08/orchestrator-and-auth
+[submodule "project-managers-interface"]
+	path = project-managers-interface
+	url = https://github.com/luchoman08/project-managers-interface
+[submodule "user-stories-assignment-service"]
+	path = user-stories-assignment-service
+	url = https://github.com/luchoman08/user-stories-assignment-service
