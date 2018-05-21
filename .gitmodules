@@ -4,3 +4,6 @@
 [submodule "software-project-management-frontend"]
 	path = software-project-management-frontend
 	url = git@github.com:luchoman08/software-project-management-frontend.git
+[submodule "orchestrator-and-auth"]
+	path = orchestrator-and-auth
+	url = https://github.com/luchoman08/orchestrator-and-auth

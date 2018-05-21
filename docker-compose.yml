@@ -1,0 +1,24 @@
+version: '2.0'
+
+services:
+  task-assignment:
+    build: 
+      context: task-assignment-service
+      dockerfile: Dockerfile
+    command: python3 manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./task-assignment-service:/code
+    ports:
+      - "8000:8000"
+  micro-software-pm:
+    container_name: micro-software-pm
+    build:
+      context: software-project-management-frontend
+      dockerfile: Dockerfile
+    volumes:
+      - ./software-project-management-frontend:/usr/src/app
+      - '/usr/src/app/node_modules'
+    ports:
+      - '4200:4200'
+    depends_on:
+      - task-assignment
