@@ -1,16 +1,7 @@
 version: '2.0'
 
 services:
-  task-assignment:
-    build: 
-      context: task-assignment-service
-      dockerfile: Dockerfile
-    command: python3 manage.py runserver 0.0.0.0:8000
-    volumes:
-      - ./task-assignment-service:/code
-    ports:
-      - "8000:8000"
-  micro-software-pm:
+  software-project-management-frontend:
     container_name: micro-software-pm
     build:
       context: software-project-management-frontend
@@ -21,4 +12,46 @@ services:
     ports:
       - '4200:4200'
     depends_on:
+      - orchestator
+  orchrestator:
+    build:
+      context: orchestrator-and-auth
+      dockerfile: Dockerfile
+    volumes:
+      - ./orchestrator-and-auth:/code
+    ports:
+      - '8000:80000'
+    depends_on:
+      - project-managers-interface
+      - user-stories-assignment
+  project-managers-interface:
+    build:
+      context: project-managers-interface
+      dockerfile: Dockerfile
+    volumes:
+      - ./project-managers-interface:/usr/src/app
+      - '/usr/src/app/node_modules'
+    ports:
+      - '3000:3000'
+    depends_on:
+      - orchrestator
+  user-stories-assignment:
+    build: 
+      context: user-stories-assignment-service
+      dockerfile: Dockerfile
+    volumes:
+      - ./user-stories-assignment-service:/usr/src/app
+      - '/usr/src/app/node_modules'
+    ports:
+      - "3001:3001"
+    depends_on:
       - task-assignment
+  task-assignment:
+    build: 
+      context: task-assignment-service
+      dockerfile: Dockerfile
+    command: python3 manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./task-assignment-service:/code
+    ports:
+      - "8001:8001"
