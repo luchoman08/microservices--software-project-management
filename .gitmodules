@@ -1,9 +1,3 @@
-[submodule "task-assignment-service"]
-	path = task-assignment-service
-	url = git@github.com:luchoman08/task-assignment-service.git
-[submodule "software-project-management-frontend"]
-	path = software-project-management-frontend
-	url = git@github.com:luchoman08/software-project-management-frontend.git
 [submodule "orchestrator-and-auth"]
 	path = orchestrator-and-auth
 	url = https://github.com/luchoman08/orchestrator-and-auth
@@ -13,3 +7,9 @@
 [submodule "user-stories-assignment-service"]
 	path = user-stories-assignment-service
 	url = https://github.com/luchoman08/user-stories-assignment-service
+[submodule "software-project-management-frontend"]
+	path = software-project-management-frontend
+	url = https://github.com/luchoman08/software-project-management-frontend/
+[submodule "task-assignment-service"]
+	path = task-assignment-service
+	url = https://github.com/luchoman08/task-assignment-service
