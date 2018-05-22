@@ -1,0 +1,93 @@
+{
+  "Services": {
+    "orchrestator": {
+      "Args": [
+        "python", 
+        "manage.py", 
+        "runserver", 
+        "0.0.0.0:8000"
+      ], 
+      "Image": "luchoman08/orchrestator@sha256:28e36be693abd8cad229187068f105d21da059b3bd926466d399da1bfbadc2d4", 
+      "Networks": [
+        "default"
+      ], 
+      "Ports": [
+        {
+          "Port": 8000, 
+          "Protocol": "tcp"
+        }
+      ]
+    }, 
+    "project-managers-interface": {
+      "Args": [
+        "npm", 
+        "run", 
+        "watch"
+      ], 
+      "Image": "luchoman08/project-managers-interface@sha256:3a8bd0b9a8b21fbe3714d635227a5ebe92d001e6670409aac5078906649aef9f", 
+      "Networks": [
+        "default"
+      ], 
+      "Ports": [
+        {
+          "Port": 3000, 
+          "Protocol": "tcp"
+        }
+      ]
+    }, 
+    "software-project-management-frontend": {
+      "Args": [
+        "ng", 
+        "serve", 
+        "--host", 
+        "0.0.0.0"
+      ], 
+      "Image": "luchoman08/software-project-management-frontend@sha256:4992cea9a3baf5b4ff8f8f6978b25f3d087dfb6fff5469daedd889ebb867b8e5", 
+      "Networks": [
+        "default"
+      ], 
+      "Ports": [
+        {
+          "Port": 4200, 
+          "Protocol": "tcp"
+        }
+      ]
+    }, 
+    "task-assignment": {
+      "Args": [
+        "python", 
+        "manage.py", 
+        "runserver", 
+        "0.0.0.0:8001"
+      ], 
+      "Image": "luchoman08/task-assignment@sha256:4a3f2fa2938c766c127336374cfa039a560d7ae45d3ed1bc5b8119663cca766a", 
+      "Networks": [
+        "default"
+      ], 
+      "Ports": [
+        {
+          "Port": 8001, 
+          "Protocol": "tcp"
+        }
+      ]
+    }, 
+    "user-stories-assignment": {
+      "Args": [
+        "npm", 
+        "run", 
+        "watch"
+      ], 
+      "Image": "luchoman08/user-stories-assignment@sha256:d0f9380a962851a47e22179d8e447c8031fad30413b81097770dad12f0a0f624", 
+      "Networks": [
+        "default"
+      ], 
+      "Ports": [
+        {
+          "Port": 3001, 
+          "Protocol": "tcp"
+        }
+      ]
+    }
+  }, 
+  "Version": "0.1"
+}

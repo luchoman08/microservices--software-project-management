@@ -2,6 +2,7 @@ version: '2.0'
 
 services:
   software-project-management-frontend:
+    image: luchoman08/software-project-management-frontend
     build:
       context: software-project-management-frontend
       dockerfile: Dockerfile
@@ -14,6 +15,7 @@ services:
     depends_on:
       - orchrestator
   orchrestator:
+    image: luchoman08/orchrestator
     build:
       context: orchestrator-and-auth
       dockerfile: Dockerfile
@@ -27,6 +29,7 @@ services:
       - user-stories-assignment
       - task-assignment
   project-managers-interface:
+    image: luchoman08/project-managers-interface
     build:
       context: project-managers-interface
       dockerfile: Dockerfile
@@ -37,6 +40,7 @@ services:
     ports:
       - '3000:3000'
   user-stories-assignment:
+    image: luchoman08/user-stories-assignment
     build: 
       context: user-stories-assignment-service
       dockerfile: Dockerfile
@@ -49,6 +53,7 @@ services:
     depends_on:
       - task-assignment
   task-assignment:
+    image: luchoman08/task-assignment
     build: 
       context: task-assignment-service
       dockerfile: Dockerfile
