@@ -53,6 +53,6 @@ fi
 
 $command_prefix $scripts_dir'start-orchrestator.sh' & \
 $command_prefix $scripts_dir'start-task-assign.sh' & \
-$command_prefix npm start --prefix software-project-management-frontend & \
+$command_prefix npm run start --prefix software-project-management-frontend & \
 $command_prefix npm run watch  --prefix project-managers-interface & \
 $command_preifx npm run watch  --prefix user-stories-assignment-service
