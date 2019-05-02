@@ -1,4 +1,6 @@
 #!/bin/bash
+
+scripts_dir=./bin/start-scripts/
 get_console_emulator_name (){
         sid=$(ps -o sid= -p "$$")
         sid_as_integer=$((sid)) # strips blanks if any
@@ -12,7 +14,7 @@ get_command_prefix () {
         if [ $emulator == 'konsole' ] 
         then
                 echo konsole --hold -e
-        elif [ $emulator == 'gnome-terminal' ] 
+        elif  [ $emulator == 'gnome-terminal' ] || [ $emulator == 'gnome-terminal-' ] ;  # ubuntu gnome terminal return the name gnome-terminal-
         then
                 echo gnome-terminal   -e
         elif [ $emulator == 'xterm' ] 
@@ -25,14 +27,14 @@ get_command_prefix () {
 command_prefix=$(get_command_prefix)
 if [[ $command_prefix  == 1 ]];
 then
-        echo "Terminal no soportada"
+        echo "Terminal '$(get_console_emulator_name)'no soportada"
         exit 1
 fi
 
 
 
-$command_prefix ./startOrchrestator.sh & \
-$command_prefix ./startTaskAssign.sh & \
-$command_prefix npm start --prefix software-project-management-frontend & \
-$command_prefix npm run watch  --prefix project-managers-interface & \
-$command_preifx npm run watch  --prefix user-stories-assignment-service & \
+echo $command_prefix "$scripts_dirstart-orchrestator.sh" & \
+$command_prefix "$scripts_dir'start-task-assign.sh'" & \
+#$command_prefix npm start --prefix software-project-management-frontend & \
+#$command_prefix npm run watch  --prefix project-managers-interface & \
+#$command_preifx npm run watch  --prefix user-stories-assignment-service & \
