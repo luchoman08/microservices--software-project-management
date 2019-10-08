@@ -9,7 +9,10 @@ get_console_emulator_name (){
 
 get_command_prefix () {
         emulator=$(get_console_emulator_name)
-        if [ $emulator == 'konsole' ] 
+	if [ $emulator == 'xfce4-terminal' ]
+	then
+		echo xfce4-terminal --hold -e
+        elif [ $emulator == 'konsole' ] 
         then
                 echo konsole --hold -e
         elif  [ $emulator == 'gnome-terminal' ] || [ $emulator == 'gnome-terminal-' ] ;  # ubuntu gnome terminal return the name gnome-terminal-
